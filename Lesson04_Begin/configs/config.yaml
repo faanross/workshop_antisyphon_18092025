@@ -1,0 +1,12 @@
+client: "127.0.0.1:0"
+
+server: "127.0.0.1:8443"
+
+timing:
+  delay: "5s"
+  jitter: 50
+
+protocol: "https"
+
+tls_key: "./certs/server.key"
+tls_cert: "./certs/server.crt"
