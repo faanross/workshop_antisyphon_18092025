@@ -11,18 +11,18 @@ const pathToYAML = "./configs/config.yaml"
 func main() {
 	// Command line flag for config file path
 	configPath := flag.String("config", pathToYAML, "path to configuration file")
-	flag.Parse()
+	// TODO Call Parse() on flag
 
 	// Load configuration
-	cfg, err := config.LoadConfig(*configPath)
+	// TODO Call our new LoadConfig function
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
 	log.Printf("Loaded configuration:\n")
 	log.Printf("-> Client: %s\n", cfg.ClientAddr)
-	log.Printf("-> Server: %s\n", cfg.ServerAddr)
-	log.Printf("-> Delay: %v\n", cfg.Timing.Delay)
+	// TODO Add Print statement for Server
+	// TODO Add Print statement for Delay
 	log.Printf("-> Jitter: %d%%\n", cfg.Timing.Jitter)
-	log.Printf("-> Starting Protocol: %s\n", cfg.Protocol)
+	// TODO Add Print statement for Starting Protocol
 }
