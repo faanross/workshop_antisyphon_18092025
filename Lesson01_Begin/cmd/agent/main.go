@@ -8,12 +8,10 @@ import (
 
 func main() {
 	agentCfg := config.Config{
-		Protocol: "https",
+		// Set protocol to HTTPS
 	}
 
 	_, err := models.NewAgent(&agentCfg)
-	if err != nil {
-		fmt.Println(err)
-	}
+	// if there is an error, use fmt.Println to display it
 
 }

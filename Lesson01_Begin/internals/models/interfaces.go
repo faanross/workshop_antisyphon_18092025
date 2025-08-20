@@ -1,18 +1,16 @@
 package models
 
-import "context"
-
 // Agent defines the contract for agents
 type Agent interface {
 	// Send sends a message and waits for a response
-	Send(ctx context.Context) ([]byte, error)
+	// TODO CREATE SEND() SIGNATURE HERE
 }
 
 // Server defines the contract for servers
 type Server interface {
 	// Start begins listening for requests
-	Start() error
+	// TODO CREATE START() SIGNATURE HERE
 
 	// Stop gracefully shuts down the server
-	Stop() error
+	// TODO CREATE STOP() SIGNATURE HERE
 }

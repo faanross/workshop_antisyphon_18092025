@@ -1,18 +1,13 @@
 package config
 
-import "time"
-
 // Config holds all application configuration
 type Config struct {
 	ClientAddr string
 	ServerAddr string
 	Timing     TimingConfig
-	Protocol   string // this will be the starting protocol
-	TlsKey     string
-	TlsCert    string
+	// Add fields for Protocol, TlsKey, and TlsCert (all string)
 }
 
 type TimingConfig struct {
-	Delay  time.Duration // Base delay between cycles
-	Jitter int           // Jitter percentage (0-100)}
+	// Add fields for Delay (time.Duration) and Jitter (int)
 }
