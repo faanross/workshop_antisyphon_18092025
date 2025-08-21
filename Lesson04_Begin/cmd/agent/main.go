@@ -23,7 +23,7 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	comm, err := models.NewAgent(cfg)
+	// TODO pass the config to our models.NewAgent() factory function
 	if err != nil {
 		log.Fatalf("Failed to create communicator: %v", err)
 	}
@@ -32,7 +32,8 @@ func main() {
 	// Send a test message
 
 	log.Printf("Sending request to %s server...", cfg.Protocol)
-	response, err := comm.Send(context.Background())
+
+	// TODO Call the Send() method on the comm instance
 	if err != nil {
 		log.Fatalf("Failed to send message: %v", err)
 	}

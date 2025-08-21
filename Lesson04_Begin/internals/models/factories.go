@@ -10,7 +10,7 @@ import (
 func NewAgent(cfg *config.Config) (Agent, error) {
 	switch cfg.Protocol {
 	case "https":
-		return https.NewHTTPSAgent(cfg.ServerAddr), nil
+		// TODO return the call to NewHTTPSAgent constructor with cfg as argument, nil error
 	case "dns":
 		return nil, fmt.Errorf("DNS not yet implemented")
 	default:
