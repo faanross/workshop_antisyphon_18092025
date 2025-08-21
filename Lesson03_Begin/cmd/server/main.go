@@ -2,7 +2,6 @@ package main
 
 import (
 	"akkeDNSII/internals/config"
-	"akkeDNSII/internals/models"
 	"flag"
 	"log"
 	"os"
@@ -23,17 +22,14 @@ func main() {
 	}
 
 	// Create server using interface's factory function
-	server, err := models.NewServer(cfg)
-	if err != nil {
-		log.Fatalf("Failed to create server: %v", err)
-	}
+	// TODO Create instance of server by passing cfg to server's factory function
+	// TODO perform error check
 
 	// Start the server in own goroutine
 	go func() {
 		log.Printf("Starting %s server on %s", cfg.Protocol, cfg.ServerAddr)
-		if err := server.Start(); err != nil {
-			log.Fatalf("Server error: %v", err)
-		}
+		// TODO call Start() on server
+		// TODO perform error check
 	}()
 
 	// Wait for interrupt signal
@@ -43,7 +39,7 @@ func main() {
 
 	// Graceful shutdown
 	log.Println("Shutting down server...")
-	if err := server.Stop(); err != nil {
-		log.Printf("Error stopping server: %v", err)
-	}
+	// TODO call Stop() on server
+	// TODO perform error check
+	
 }

@@ -12,23 +12,21 @@ import (
 
 // HTTPSServer implements the Server interface for HTTPS
 type HTTPSServer struct {
-	addr    string
-	server  *http.Server
-	tlsCert string
-	tlsKey  string
+	addr   string
+	server *http.Server
+	// TODO add fields for tlsCert and tlsKey, both strings (path to the files)
 }
 
 // HTTPSResponse represents the JSON response for HTTPS
 type HTTPSResponse struct {
-	Change bool `json:"change"`
+	Change bool // TODO add tag here to allow for conversion to JSON
 }
 
 // NewHTTPSServer creates a new HTTPS server
 func NewHTTPSServer(cfg *config.Config) *HTTPSServer {
 	return &HTTPSServer{
-		addr:    cfg.ServerAddr,
-		tlsCert: cfg.TlsCert,
-		tlsKey:  cfg.TlsKey,
+		addr: cfg.ServerAddr,
+		// TODO add fields for tlsCert and tlsKey
 	}
 }
 
@@ -38,12 +36,13 @@ func (s *HTTPSServer) Start() error {
 	r := chi.NewRouter()
 
 	// Define our GET endpoint
-	r.Get("/", RootHandler)
+	// TODO define a GET endpoint at /, call the RootHandler function
 
 	// Create the HTTP server
 	s.server = &http.Server{
-		Addr:    s.addr,
-		Handler: r,
+		// TODO assign fields Addr and Handler
+		// Addr is equal to addr field from s
+		// Handler is the Chi router object r
 	}
 
 	// Start the server
@@ -55,15 +54,15 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Endpoint %s has been hit by agent\n", r.URL.Path)
 
 	// Create response with change set to false
-	response := HTTPSResponse{
-		Change: false,
-	}
+	// TODO create variable response which is HTTPSResponse with Change field set to false
 
 	// Set content type to JSON
 	w.Header().Set("Content-Type", "application/json")
 
 	// Encode and send the response
-	if err := json.NewEncoder(w).Encode(response); err != nil {
+	err := json.NewEncoder(w).Encode(response)
+
+	if err != nil {
 		log.Printf("Error encoding response: %v\n", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
@@ -79,8 +78,10 @@ func (s *HTTPSServer) Stop() error {
 	}
 
 	// Give the server 5 seconds to shut down gracefully
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	// TODO create context.WithTimeout with a 5 second limit
 	defer cancel()
 
-	return s.server.Shutdown(ctx)
+	// TODO assign return value directly as calling Shutdown on our HTTPSServer's server field
+	// Remember to pass context as argument
+
 }

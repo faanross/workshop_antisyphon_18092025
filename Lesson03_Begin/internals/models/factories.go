@@ -22,7 +22,7 @@ func NewAgent(cfg *config.Config) (Agent, error) {
 func NewServer(cfg *config.Config) (Server, error) {
 	switch cfg.Protocol {
 	case "https":
-		return https.NewHTTPSServer(cfg), nil
+		// TODO return the call to NewHTTPSServer constructor with cfg as argument, nil error
 	case "dns":
 		return nil, fmt.Errorf("DNS not yet implemented")
 	default:
