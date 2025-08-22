@@ -36,16 +36,12 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 		log.Printf("Received response: change=%v", httpsResp.Change)
 
 		// Calculate sleep duration with jitter
-		sleepDuration := CalculateSleepDuration(time.Duration(cfg.Timing.Delay), cfg.Timing.Jitter)
+		// TODO calculate sleepDuration using our helper
+
 		log.Printf("Sleeping for %v", sleepDuration)
 
 		// Sleep with cancellation support
-		select {
-		case <-time.After(sleepDuration):
-			// Continue to next iteration
-		case <-ctx.Done():
-			return ctx.Err()
-		}
+		// TODO Add a select statement to make it cancellable during sleepDuration
 	}
 }
 

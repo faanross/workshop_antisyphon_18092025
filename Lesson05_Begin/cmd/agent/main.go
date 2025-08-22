@@ -24,6 +24,7 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
+	// Call agent's factory function
 	comm, err := models.NewAgent(cfg)
 	if err != nil {
 		log.Fatalf("Failed to create communicator: %v", err)
@@ -38,16 +39,14 @@ func main() {
 		log.Printf("Starting %s client run loop", cfg.Protocol)
 		log.Printf("Delay: %v, Jitter: %d%%", cfg.Timing.Delay, cfg.Timing.Jitter)
 
-		if err := runloop.RunLoop(ctx, comm, cfg); err != nil {
-			log.Printf("Run loop error: %v", err)
-		}
+		// TODO call runloop.RunLoop + error check
 	}()
 
 	// Wait for interrupt signal
-	sigChan := make(chan os.Signal, 1)
+	// TODO create sigChan channel
 	signal.Notify(sigChan, os.Interrupt)
 	<-sigChan
 
 	log.Println("Shutting down client...")
-	cancel() // This will cause the run loop to exit
+	// Todo call cancel()
 }
