@@ -25,7 +25,7 @@ func NewServer(cfg *config.Config) (Server, error) {
 	case "https":
 		return https.NewHTTPSServer(cfg), nil
 	case "dns":
-		return dns.NewDNSServer(cfg), nil
+		// TODO return call to NewDNSServer constructor
 	default:
 		return nil, fmt.Errorf("unsupported protocol: %v", cfg.Protocol)
 	}

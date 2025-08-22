@@ -9,14 +9,15 @@ import (
 
 // DNSServer implements the Server interface for DNS
 type DNSServer struct {
-	addr   string
-	server *dns.Server
+	// TODO add field for addr of type string
+	// TODO add server for addr of type *dns.Server
+
 }
 
 // NewDNSServer creates a new DNS server
 func NewDNSServer(cfg *config.Config) *DNSServer {
 	return &DNSServer{
-		addr: cfg.ServerAddr,
+		// TODO set addr equal to value from config
 	}
 }
 
@@ -24,9 +25,9 @@ func NewDNSServer(cfg *config.Config) *DNSServer {
 func (s *DNSServer) Start() error {
 	// Create and configure the DNS server
 	s.server = &dns.Server{
-		Addr:    s.addr,
-		Net:     "udp",
-		Handler: dns.HandlerFunc(s.handleDNSRequest),
+		Addr: s.addr,
+		// TODO set Net field equal to "udp"
+		// TODO set Handler field equal to s.handleDNSRequest method passed as argument to dns.HandlerFunc()
 	}
 
 	// Start server
@@ -37,15 +38,14 @@ func (s *DNSServer) Start() error {
 func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 	// Create response message
 	m := new(dns.Msg)
-	m.SetReply(r)
-	m.Authoritative = true
+	// TODO set the message as a reply
+	// TODO set the answer as being authoritative
 
 	// Process each question
 	for _, question := range r.Question {
 		// We only handle A records for now
-		if question.Qtype != dns.TypeA {
-			continue
-		}
+
+		// TODO add conditional logic so that if it's not A record skip to next iteration with continue
 
 		// Log the query
 		log.Printf("DNS query for: %s", question.Name)
@@ -58,13 +58,13 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 				Class:  dns.ClassINET,
 				Ttl:    300,
 			},
-			A: net.ParseIP("42.42.42.42"),
+			// TODO set answer equal to 42.42.42.42
 		}
 		m.Answer = append(m.Answer, rr)
 	}
 
 	// Send response
-	w.WriteMsg(m)
+	// TODO send response (m) using WriteMsg()
 }
 
 // Stop implements Server.Stop for DNS
@@ -73,5 +73,5 @@ func (s *DNSServer) Stop() error {
 		return nil
 	}
 	log.Println("Stopping DNS server...")
-	return s.server.Shutdown()
+	// TODO return a call to Shutdown() on s.server
 }
