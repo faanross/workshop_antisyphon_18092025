@@ -5,7 +5,7 @@ import "time"
 // Config holds all application configuration
 type Config struct {
 	ClientAddr string `yaml:"client"`
-	// Add YAML tags to all other fields
+	// TODO Add YAML tags to all other fields
 	// Make sure they match exactly with labels in the actual YAML file
 	ServerAddr string
 	Timing     TimingConfig

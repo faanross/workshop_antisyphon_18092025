@@ -7,4 +7,4 @@ timing:
   delay: "5s"
   jitter: 50
 
-# add fields + values for protocol, tls_key, and tls_cert
+# TODO add fields + values for protocol, tls_key, and tls_cert

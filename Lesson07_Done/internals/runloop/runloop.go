@@ -24,7 +24,9 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 		response, err := comm.Send(ctx)
 		if err != nil {
 			log.Printf("Error sending request: %v", err)
-			return err
+			// Don't exit - just sleep and try again
+			time.Sleep(cfg.Timing.Delay)
+			continue // Skip to next iteration
 		}
 
 		// Parse and display response

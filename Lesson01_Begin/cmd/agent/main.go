@@ -8,10 +8,10 @@ import (
 
 func main() {
 	agentCfg := config.Config{
-		// Set protocol to HTTPS
+		// TODO Set protocol to HTTPS
 	}
 
 	_, err := models.NewAgent(&agentCfg)
-	// if there is an error, use fmt.Println to display it
+	// TODO if there is an error, use fmt.Println to display it
 
 }
