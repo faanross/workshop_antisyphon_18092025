@@ -19,5 +19,5 @@ func NewAgent(cfg *config.Config) (Agent, error) {
 
 // NewServer creates a new server based on the protocol
 func NewServer(cfg *config.Config) (Server, error) {
-	// Using EXACT SAME logic as above, implement the NewServer factory function
+	// TODO Using EXACT SAME logic as above, implement the NewServer factory function
 }

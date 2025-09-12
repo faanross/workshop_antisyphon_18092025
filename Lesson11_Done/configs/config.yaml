@@ -6,7 +6,7 @@ timing:
   delay: "5s"
   jitter: 50
 
-protocol: "dns"
+protocol: "https"
 
 tls_key: "./certs/server.key"
 tls_cert: "./certs/server.crt"
