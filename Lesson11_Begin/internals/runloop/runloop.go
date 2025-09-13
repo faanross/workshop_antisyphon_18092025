@@ -15,7 +15,7 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 
 	// ADD THESE TWO LINES:
 	currentProtocol := cfg.Protocol // Track which protocol we're using
-	currentAgent := comm            // Track current agent (can change!)
+	// TODO create new var currentAgent starts being equal to comm
 
 	for {
 		// Check if context is cancelled
@@ -25,7 +25,8 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 		default:
 		}
 
-		response, err := currentAgent.Send(ctx)
+		// TODO call Send(ctx) on currentAgent now, returns response and err
+
 		if err != nil {
 			log.Printf("Error sending request: %v", err)
 			// Don't exit - just sleep and try again
@@ -42,7 +43,7 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 			// Figure out what protocol to switch TO
 			newProtocol := "dns"
 			if currentProtocol == "dns" {
-				newProtocol = "https"
+				// TODO if it's dns set newProtocol equal to https
 			}
 
 			// Create config for new protocol
@@ -57,8 +58,11 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 			} else {
 				// Update our tracking variables
 				log.Printf("Successfully switched from %s to %s", currentProtocol, newProtocol)
-				currentProtocol = newProtocol
-				currentAgent = newAgent
+
+				// This means we want to transition
+				// TODO set currentProtocol equal to newProtocol
+				// TODO set currentAgent equal to newAgent
+
 			}
 		} else {
 			// Normal response - parse and log as before
@@ -118,10 +122,12 @@ func detectTransition(protocol string, response []byte) bool {
 		if err := json.Unmarshal(response, &httpsResp); err != nil {
 			return false
 		}
-		return httpsResp.Change
+
+		// TODO return the value of httpsResp.Change
 
 	case "dns":
 		ipAddr := string(response)
+		// TODO return the evaluation if ipAddr is equal to "69.69.69.69"
 		return ipAddr == "69.69.69.69"
 	}
 

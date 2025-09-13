@@ -38,8 +38,8 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 			if err := json.Unmarshal(response, &httpsResp); err != nil {
 				log.Fatalf("Failed to parse response: %v", err)
 			}
-
 			log.Printf("Received response: change=%v", httpsResp.Change)
+
 		case "dns":
 			ipAddr := string(response)
 			log.Printf("Received response: IP=%v", ipAddr)
