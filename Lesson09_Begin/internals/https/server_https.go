@@ -57,15 +57,15 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Check if we should transition
 	shouldChange := control.Manager.CheckAndReset()
-	response := HTTPSResponse{
-		Change: shouldChange,
-	}
+
+	// TODO instantiate response struct HTTPSResponse with Change field equal to shouldChange
+
 	if shouldChange {
 		log.Printf("HTTPS: Sending transition signal (change=true)")
 	} else {
 		log.Printf("HTTPS: Normal response (change=false)")
 	}
-	
+
 	// Set content type to JSON
 	w.Header().Set("Content-Type", "application/json")
 

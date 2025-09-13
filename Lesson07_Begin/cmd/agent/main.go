@@ -32,8 +32,8 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	comm.Send(ctx)
-	
+	// TODO call Send() one time, pass context as argument
+
 	//Start run loop in goroutine
 	//go func() {
 	//	log.Printf("Starting %s client run loop", cfg.Protocol)

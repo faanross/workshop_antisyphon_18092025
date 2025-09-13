@@ -9,7 +9,8 @@ import (
 
 // TransitionManager handles the global transition state
 type TransitionManager struct {
-	mu               sync.RWMutex
+	mu sync.RWMutex
+	// TODO create our flag - a bool called shouldTransition
 	shouldTransition bool
 }
 
@@ -25,7 +26,7 @@ func (tm *TransitionManager) CheckAndReset() bool {
 	defer tm.mu.Unlock()
 
 	if tm.shouldTransition {
-		tm.shouldTransition = false // Reset immediately
+		// TODO immediately reset shouldTransition to false
 		log.Printf("Transition signal consumed and reset")
 		return true
 	}
@@ -38,7 +39,7 @@ func (tm *TransitionManager) TriggerTransition() {
 	tm.mu.Lock()
 	defer tm.mu.Unlock()
 
-	tm.shouldTransition = true
+	// TODO set flag tm.shouldTransition to true
 	log.Printf("Transition triggered")
 }
 
@@ -48,7 +49,7 @@ func handleSwitch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	Manager.TriggerTransition()
+	// TODO call Manager.TriggerTransition()
 
 	response := "Protocol transition triggered"
 
@@ -57,7 +58,8 @@ func handleSwitch(w http.ResponseWriter, r *http.Request) {
 
 // StartControlAPI starts the control API server on port 8080
 func StartControlAPI() {
-	http.HandleFunc("/switch", handleSwitch)
+
+	// TODO call http.HandleFunc, set endpoint as /switch (arg 1) and call handler handleSwitch (arg 2)
 
 	log.Println("Starting Control API on :8080")
 	go func() {

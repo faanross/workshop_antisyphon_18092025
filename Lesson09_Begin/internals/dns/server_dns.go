@@ -52,13 +52,15 @@ func (s *DNSServer) handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 		log.Printf("DNS query for: %s", question.Name)
 
 		// Response is based on the control flag
-		shouldTransition := control.Manager.CheckAndReset()
+
+		// TODO var shouldTransition is equal to return of control.Manager.CheckAndReset()
+
 		var responseIP string
 		if shouldTransition {
-			responseIP = "69.69.69.69"
+			// TODO set responseIP equal to "69.69.69.69"
 			log.Printf("DNS: Sending transition signal (69.69.69.69)")
 		} else {
-			responseIP = "42.42.42.42"
+			// TODO set responseIP equal to "42.42.42.42"
 			log.Printf("DNS: Normal response (42.42.42.42)")
 		}
 

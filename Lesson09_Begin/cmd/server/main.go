@@ -2,7 +2,6 @@ package main
 
 import (
 	"akkeDNSII/internals/config"
-	"akkeDNSII/internals/control"
 	"akkeDNSII/internals/models"
 	"flag"
 	"log"
@@ -24,7 +23,7 @@ func main() {
 	}
 
 	// Load our control API
-	control.StartControlAPI()
+	// TODO call StartControlAPI() from the control package
 
 	// Create server using interface's factory function
 	server, err := models.NewServer(cfg)

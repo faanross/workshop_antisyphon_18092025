@@ -41,8 +41,8 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 
 			log.Printf("Received response: change=%v", httpsResp.Change)
 		case "dns":
-			ipAddr := string(response)
-			log.Printf("Received response: IP=%v", ipAddr)
+			// TODO set ipAddr equal to response, cast to string
+			// TODO use log.Printf to print ipAddr value to console
 
 		}
 

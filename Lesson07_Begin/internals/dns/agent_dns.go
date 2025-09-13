@@ -10,14 +10,14 @@ import (
 // DNSAgent implements the CommunicatorAgent interface for DNS
 type DNSAgent struct {
 	serverAddr string
-	client     *dns.Client
+	// TODO add client of type *dns.Client
 }
 
 // NewDNSAgent creates a new DNS client
 func NewDNSAgent(serverAddr string) *DNSAgent {
 	return &DNSAgent{
 		serverAddr: serverAddr,
-		client:     new(dns.Client),
+		// TODO assign client fields, create dns.Client using new()
 	}
 }
 
@@ -28,7 +28,8 @@ func (c *DNSAgent) Send(ctx context.Context) ([]byte, error) {
 
 	// For now, we'll query for a fixed domain
 	domain := "www.thisdoesnotexist.com."
-	m.SetQuestion(domain, dns.TypeA)
+
+	// TODO call SetQuestion for domain and desired record type
 	log.Printf("Sending DNS query for: %s", domain)
 
 	// Send query
@@ -46,7 +47,7 @@ func (c *DNSAgent) Send(ctx context.Context) ([]byte, error) {
 	for _, ans := range r.Answer {
 		if a, ok := ans.(*dns.A); ok {
 			// Return the IP address as string
-			ipStr := a.A.String()
+			// TODO create var called ipStr, assign it value of A in a, cast to string using method String
 			log.Printf("Received DNS response: %s -> %s", domain, ipStr)
 			return []byte(ipStr), nil
 		}

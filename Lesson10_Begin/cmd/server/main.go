@@ -31,7 +31,7 @@ func main() {
 
 	// Create HTTPS server
 	httpsCfg := *cfg
-	httpsCfg.Protocol = "https"
+	// TODO set httpsCfg.Protocol equal to "https"
 	httpsServer, err := models.NewServer(&httpsCfg)
 	if err != nil {
 		log.Fatalf("Failed to create HTTPS server: %v", err)
@@ -40,7 +40,8 @@ func main() {
 	// Create DNS server
 	dnsCfg := *cfg
 	dnsCfg.Protocol = "dns"
-	dnsServer, err := models.NewServer(&dnsCfg)
+	// TODO call models.NewServer with dnsCfg as argument
+
 	if err != nil {
 		log.Fatalf("Failed to create DNS server: %v", err)
 	}
@@ -48,9 +49,9 @@ func main() {
 	// Start HTTPS server in goroutine
 	go func() {
 		log.Printf("Starting HTTPS server on %s (TCP)", cfg.ServerAddr)
-		if err := httpsServer.Start(); err != nil {
-			log.Fatalf("HTTPS server error: %v", err)
-		}
+
+		// TODO call httpsServer.Start()
+		// TODO error check
 	}()
 
 	// Start DNS server in goroutine
