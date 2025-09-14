@@ -13,6 +13,6 @@ type Config struct {
 }
 
 type TimingConfig struct {
-	Delay  time.Duration // Base delay between cycles
-	Jitter int           // Jitter percentage (0-100)}
+	Delay  time.Duration
+	Jitter int
 }

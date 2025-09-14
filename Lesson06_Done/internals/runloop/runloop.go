@@ -17,7 +17,8 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 		// Check if context is cancelled
 		select {
 		case <-ctx.Done():
-			return ctx.Err()
+			log.Println("Run loop cancelled")
+			return nil
 		default:
 		}
 
@@ -46,7 +47,8 @@ func RunLoop(ctx context.Context, comm models.Agent, cfg *config.Config) error {
 		case <-time.After(sleepDuration):
 			// Continue to next iteration
 		case <-ctx.Done():
-			return ctx.Err()
+			log.Println("Run loop cancelled")
+			return nil
 		}
 	}
 }
