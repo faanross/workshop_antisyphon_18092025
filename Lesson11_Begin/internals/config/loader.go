@@ -53,7 +53,7 @@ func (c *Config) ValidateConfig() error {
 	}
 
 	if c.TlsKey == "" {
-		return fmt.Errorf("tls cert cannot be empty")
+		return fmt.Errorf("tls key cannot be empty")
 	}
 
 	return nil

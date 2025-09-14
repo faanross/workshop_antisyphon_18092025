@@ -75,6 +75,6 @@ func main() {
 	}
 
 	if err := dnsServer.Stop(); err != nil {
-		log.Printf("Error HTTPS stopping server: %v", err)
+		log.Printf("Error DNS stopping server: %v", err)
 	}
 }
