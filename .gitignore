@@ -7,8 +7,8 @@
 
 
 # Key and Certificates
-*.key
-*.crt
+# *.key
+# *.crt
 
 # Test binary, built with `go test -c`
 *.test
